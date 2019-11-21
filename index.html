@@ -4,14 +4,16 @@
 </head>
 <body>
     <div id="app">
-        {{message}}
+        {{ message }}
+        <span v-if="show">Condition Practice with Vue!</span>
      </div>
 
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                message :'Hello Vue JS!'
+                message :'Hello Vue JS!',
+                show: true
             }
         })
     </script>
