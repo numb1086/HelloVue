@@ -4,8 +4,13 @@
 </head>
 <body>
     <div id="app">
-        {{ message }}
-        <span v-if="show">Condition Practice with Vue!</span>
+        {{message}}
+        <span v-if="show">Hi there! I'm showing!</span>
+        <ul>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ul>
      </div>
 
     <script>
@@ -13,9 +18,15 @@
             el: '#app',
             data: {
                 message :'Hello Vue JS!',
-                show: true
+                show : true,
+                todos: [
+                    { text: 'JavaScript Learning'},
+                    { text: 'Learning Vue!'},
+                    { text: 'I want to learn more knowledge!'}
+                ]
             }
         })
+        app.todos.push({text:'Thanks for watching this!'})
     </script>
 </body>
 </html>
