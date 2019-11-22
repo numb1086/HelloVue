@@ -9,16 +9,24 @@
         <ul>
             <li v-for="todo in todos">
                 {{ todo.text }}
-            </li>
-            <todo-item></todo-item>
+            </li> 
         </ul>
+        <ol>
+            <todo-item 
+                v-for="item in list"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+
+            </todo-item>
+        </ol>
         <input v-model="message">
         <button v-on:click="reverseMessage">Reverse Message</button>
      </div>
 
     <script>
         Vue.component('todo-item',{
-            template: '<li>This is a todo item</li>'
+            props: ['todo'],
+            template: '<li>{{ todo.text }}</li>'
         })
 
         var app = new Vue({
@@ -30,6 +38,11 @@
                     { text: 'JavaScript Learning'},
                     { text: 'Learning Vue!'},
                     { text: 'I want to learn more knowledge!'}
+                ],
+                list : [
+                    { id:0, text: 'Eat breakfast when I get up!' },
+                    { id:1, text: 'Do exercise!'},
+                    { id:2, text: 'Learning new knowledge!'}
                 ]
             },
             methods: {
