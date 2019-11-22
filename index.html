@@ -4,13 +4,14 @@
 </head>
 <body>
     <div id="app">
-        {{message}}
+        <p>{{message}}</p>
         <span v-if="show">Hi there! I'm showing!</span>
         <ul>
             <li v-for="todo in todos">
                 {{ todo.text }}
             </li>
         </ul>
+        <button v-on:click="reverseMessage">Reverse Message</button>
      </div>
 
     <script>
@@ -24,6 +25,11 @@
                     { text: 'Learning Vue!'},
                     { text: 'I want to learn more knowledge!'}
                 ]
+            },
+            methods: {
+                reverseMessage: function(){
+                    this.message = this.message.split('').reverse().join('')
+                }
             }
         })
         app.todos.push({text:'Thanks for watching this!'})
