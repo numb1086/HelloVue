@@ -10,12 +10,17 @@
             <li v-for="todo in todos">
                 {{ todo.text }}
             </li>
+            <todo-item></todo-item>
         </ul>
         <input v-model="message">
         <button v-on:click="reverseMessage">Reverse Message</button>
      </div>
 
     <script>
+        Vue.component('todo-item',{
+            template: '<li>This is a todo item</li>'
+        })
+
         var app = new Vue({
             el: '#app',
             data: {
@@ -30,6 +35,7 @@
             methods: {
                 reverseMessage: function(){
                     this.message = this.message.split('').reverse().join('')
+                    this.todos = this.todos.reverse()
                 }
             }
         })
